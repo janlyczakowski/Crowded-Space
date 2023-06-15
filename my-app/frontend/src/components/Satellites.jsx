@@ -1,8 +1,9 @@
 import { Point, Points, Sphere } from '@react-three/drei';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { getSatellitePosition } from '../getSatellitePosition';
 
-function Satellites() {
+function Satellites(props) {
+  const { correctedPosition } = props;
   const [satelliteHover, setSatelliteHover] = useState(false);
   //   const satRef = useRef();
 
@@ -24,6 +25,19 @@ function Satellites() {
     console.log(e.object);
   };
 
+  // const satPosition = correctedPosition
+  //   ? [
+  //       getSatellitePosition(tleLine1, tleLine2)[0] - 2,
+  //       getSatellitePosition(tleLine1, tleLine2)[1],
+  //       getSatellitePosition(tleLine1, tleLine2)[2],
+  //     ]
+  //   : getSatellitePosition(tleLine1, tleLine2);
+  // useEffect(() => {
+  //   // console.log(correctedPosition);
+  //   console.log(getSatellitePosition(tleLine1, tleLine2));
+  //   // if()
+  // }, [correctedPosition]);
+  // console.log(satPosition);
   return (
     <Points sizes={0.1}>
       <pointsMaterial vertexColors size={0.01} />
