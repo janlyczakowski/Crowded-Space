@@ -2,18 +2,18 @@ import { Canvas } from '@react-three/fiber';
 import styles from './App.module.css';
 import Earth from './components/Earth';
 import SkyBox from './components/Skybox';
-import { Suspense, useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import Sidebar from './components/Sidebar';
-import { useThree } from '@react-three/fiber';
-import { DEG2RAD } from 'three/src/math/MathUtils';
-// import { useEffect } from 'react';
-
-// import CircularProgress from '@mui/material/CircularProgress';
-// extend({ CircularProgress });
+import { useRef } from 'react';
+import { useMediaQuery } from 'react-responsive';
+import ErrorFallback from './UI/ErrorFallback';
+import { Html } from '@react-three/drei';
 
 function App() {
   console.log('app rendered');
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const canvasRef = useRef(null);
+  const isBigScreen = useMediaQuery({ query: '(min-width: 1000px)' });
 
   // const navBtnStyle = isBigScreen ?
 
@@ -39,29 +39,40 @@ function App() {
   //   //   controls.dispose();
   //   // };
   // }, [camera, gl]);
+
+  useEffect(() => {
+    if (isBigScreen) {
+      const canvasElement = canvasRef.current;
+      if (sidebarOpen) {
+        canvasElement.style.transform = 'translateX(-200px)';
+      } else {
+        canvasElement.style.transform = 'translateX(0)';
+      }
+    }
+  }, [sidebarOpen, isBigScreen]);
+
   return (
-    <>
-      <Suspense
-        fallback={
-          <div className={styles.wrapper}>
-            <p className={styles.loading_text}>
-              Please wait, data is loading...
-            </p>
-          </div>
-        }
-      >
-        <div className={styles.content_wrapper}>
-          <Canvas
-          // camera={{ fov: 24, near: 1.0, far: 1000, position: [60, 20, 150] }}
+    <ErrorFallback>
+      <div className={styles.content_wrapper}>
+        <Canvas ref={canvasRef}>
+          <Suspense
+            fallback={
+              <Html center className={styles.fallback_wrapper}>
+                <div className={styles.wrapper}>
+                  <p className={styles.loading_text}>
+                    Hold on, we're putting satellites on their orbits...
+                  </p>
+                </div>
+              </Html>
+            }
           >
             <Earth sidebarOpen={sidebarOpen} />
             <SkyBox />
-          </Canvas>
-          <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-        </div>
-      </Suspense>
-      {/* <Loader /> */}
-    </>
+          </Suspense>
+        </Canvas>
+        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      </div>
+    </ErrorFallback>
   );
 }
 

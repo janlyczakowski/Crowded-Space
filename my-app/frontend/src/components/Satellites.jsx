@@ -1,6 +1,8 @@
 import { Point, Points, Sphere } from '@react-three/drei';
 import { useState, useRef, useEffect } from 'react';
 import { getSatellitePosition } from '../getSatellitePosition';
+import { useFrame } from '@react-three/fiber';
+import styles from './Satellites.module.css';
 
 function Satellites(props) {
   const { correctedPosition } = props;
@@ -13,43 +15,50 @@ function Satellites(props) {
   const tleLine2 =
     '2 25544  51.6424  10.9615 0005598  65.0896  31.7520 15.50597012400464';
 
-  const [satellite_cords, setSatelliteCords] = useState([
+  const [satelliteCoords, setSatelliteCoords] = useState([
     ...getSatellitePosition(tleLine1, tleLine2),
   ]);
 
-  console.log(satellite_cords);
+  console.log(satelliteCoords);
 
-  const onClickOverHandler = (e) => {
+  const onPointerOverHandler = (e) => {
     e.stopPropagation();
-    console.log('point clicked');
+    setSatelliteHover(true);
+    document.body.style.cursor = 'pointer';
+    // console.log(satelliteHover);
+    // setSatelliteHover(() => !satelliteHover);
+    // console.log('point clicked');
     console.log(e.object);
   };
+  const onPointerOutHandler = (e) => {
+    e.stopPropagation();
+    setSatelliteHover(false);
+    document.body.style.cursor = 'auto';
+  };
 
-  // const satPosition = correctedPosition
-  //   ? [
-  //       getSatellitePosition(tleLine1, tleLine2)[0] - 2,
-  //       getSatellitePosition(tleLine1, tleLine2)[1],
-  //       getSatellitePosition(tleLine1, tleLine2)[2],
-  //     ]
-  //   : getSatellitePosition(tleLine1, tleLine2);
-  // useEffect(() => {
-  //   // console.log(correctedPosition);
-  //   console.log(getSatellitePosition(tleLine1, tleLine2));
-  //   // if()
-  // }, [correctedPosition]);
-  // console.log(satPosition);
+  // update position 60 times per second to create animated movement
+  // useFrame(({ clock }) => {
+  //   // const elapsedTime = clock.getElapsedTime();
+  //   // console.log(clock);
+  //   setSatelliteCoords([...getSatellitePosition(tleLine1, tleLine2)]);
+  //   // earthRef.current.rotation.y = elapsedTime / 10;
+  //   // cloudsRef.current.rotation.y = elapsedTime / 10;
+  // });
+
   return (
-    <Points sizes={0.1}>
-      <pointsMaterial vertexColors size={0.01} />
-      <Point
+    <>
+      {/* {satelliteCoords.map((index,key)=>{ */}
+      <mesh
+        // key={index}
         position={getSatellitePosition(tleLine1, tleLine2)}
-        //   color={satelliteHover ? 0x888888 : 'red'}
-        color="red"
-        // ref={satRef}
-        // onPointerOver={(e) => onMouseOver(e)}
-        onClick={(e) => onClickOverHandler(e)}
-      />
-    </Points>
+        // onClick={onClickOverHandler}
+        onPointerOver={onPointerOverHandler}
+        onPointerOut={onPointerOutHandler}
+      >
+        <sphereGeometry args={[0.004, 32, 32]} />
+        <meshBasicMaterial color={satelliteHover ? 'gray' : 'red'} />
+      </mesh>
+    </>
   );
 }
 

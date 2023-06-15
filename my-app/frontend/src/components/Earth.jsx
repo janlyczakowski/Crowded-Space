@@ -88,9 +88,6 @@ function Earth(props) {
   //   // };
   // }, [camera, earthRef.currentf]);
 
-  const scenePosition = sidebarOpen ? [-2, 0, 0] : [0, 0, 0];
-  console.log(scenePosition);
-
   return (
     <>
       {/* <FrameLimiter /> */}
@@ -98,7 +95,7 @@ function Earth(props) {
       <pointLight color={'#fffce8'} position={[2, 0, 2]} intensity={[1.2]} />
       <ambientLight intensity={0.8} />
       <Satellites correctedPosition={sidebarOpen} />
-      <mesh ref={cloudsRef} position={scenePosition}>
+      <mesh ref={cloudsRef}>
         <sphereGeometry args={[1.005, 32, 32]} />
         <meshPhongMaterial
           map={cloudsMap}
@@ -109,7 +106,6 @@ function Earth(props) {
       </mesh>
       <mesh
         ref={earthRef}
-        position={scenePosition}
         // position={(100, 0, 0)}
         //   onClick={() => console.log('Earth clicked')}
       >
