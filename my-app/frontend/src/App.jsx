@@ -3,7 +3,7 @@ import styles from './App.module.css';
 import Earth from './components/Earth';
 import SkyBox from './components/Skybox';
 import React, { Suspense, useEffect, useState } from 'react';
-import Sidebar from './components/Sidebar';
+import Sidebar from './components/Sidebar/Sidebar';
 import { useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ErrorFallback from './UI/ErrorFallback';
@@ -41,13 +41,15 @@ function App() {
   // }, [camera, gl]);
 
   useEffect(() => {
+    const canvasElement = canvasRef.current;
     if (isBigScreen) {
-      const canvasElement = canvasRef.current;
       if (sidebarOpen) {
         canvasElement.style.transform = 'translateX(-200px)';
       } else {
         canvasElement.style.transform = 'translateX(0)';
       }
+    } else {
+      canvasElement.style.transform = 'translateX(0)';
     }
   }, [sidebarOpen, isBigScreen]);
 

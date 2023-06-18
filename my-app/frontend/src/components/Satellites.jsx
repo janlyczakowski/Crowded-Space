@@ -19,7 +19,7 @@ function Satellites(props) {
     ...getSatellitePosition(tleLine1, tleLine2),
   ]);
 
-  console.log(satelliteCoords);
+  // console.log(satelliteCoords);
 
   const onPointerOverHandler = (e) => {
     e.stopPropagation();
@@ -28,7 +28,7 @@ function Satellites(props) {
     // console.log(satelliteHover);
     // setSatelliteHover(() => !satelliteHover);
     // console.log('point clicked');
-    console.log(e.object);
+    // console.log(e.object);
   };
   const onPointerOutHandler = (e) => {
     e.stopPropagation();
