@@ -74,9 +74,9 @@ function App() {
           </Suspense>
         </Canvas>
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-        <div className={styles.info_section}>
-          <InfoSection />
-        </div>
+        {/* <div className={styles.info_section}> */}
+        <InfoSection />
+        {/* </div> */}
       </div>
     </ErrorFallback>
   );
