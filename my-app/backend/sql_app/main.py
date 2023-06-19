@@ -5,6 +5,7 @@ from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 import crud, models, schemas
 from database import SessionLocal, engine
+from datetime import datetime
 #initialize database
 
 models.Base.metadata.create_all(bind=engine)
@@ -22,22 +23,31 @@ def get_db():
 
 
 #path operations
-#call active single
-@app.get("/active/{active_norad_cat_id}", response_model=schemas.ActiveBase)
-def read_active(active_norad_cat_id: int, db: Session = Depends(get_db)):
-    db_active_norad_cat_id = crud.get_active(db, active_norad_cat_id=active_norad_cat_id)
+#call active launch_date
+@app.get("/activelaunch/", response_model=List[schemas.ActiveBase])
+def read_active(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    active_launch = crud.get_actives(db, skip=skip, limit=limit)
+    return active_launch
 
-    if db_active_norad_cat_id is None:
-        raise HTTPException(status_code=404, detail="User not found")
+#call active and debris
+#call actives and debris
+#@app.get("/activedebris/", response_model=List[schemas.ActiveDebrisBase])
+#def read_activedebris(skip: int = 0, limit: int = 7834, db: Session = Depends(get_db)):
+    #active = crud.get_actives(db, skip=skip, limit=limit)
+    #debris = crud.get_debris(db, skip=skip, limit=limit)
+    #return schemas.ActiveDebrisBase(active=active, debris=debris)
 
-    return db_active_norad_cat_id
 #call actives
 @app.get("/active/", response_model=List[schemas.ActiveBase])
 def read_actives(skip: int = 0, limit: int = 7856, db: Session = Depends(get_db)):
     actives = crud.get_actives(db, skip=skip, limit=limit)
     return actives
-#call actives and debris
+
 #call debris
+@app.get("/debris/", response_model=List[schemas.DebrisBase])
+def read_debris(skip: int = 0, limit: int = 3451, db: Session = Depends(get_db)):
+    debris = crud.get_debris(db, skip=skip, limit=limit)
+    return debris
 #call communications
 @app.get("/communications/", response_model=List[schemas.CommunicationsBase])
 def read_communication(skip: int = 0, limit: int = 6689, db: Session = Depends(get_db)):
@@ -50,7 +60,7 @@ def read_misc(skip: int = 0, limit: int = 148, db: Session = Depends(get_db)):
     return misc
 #call nav
 @app.get("/nav/", response_model=List[schemas.NavigationBase])
-def read_misc(skip: int = 0, limit: int = 320, db: Session = Depends(get_db)):
+def read_nav(skip: int = 0, limit: int = 320, db: Session = Depends(get_db)):
     nav = crud.get_navigation(db, skip=skip, limit=limit)
     return nav
 #call science

@@ -33,29 +33,11 @@ class Communications(Base):
     comm_tle2 = Column(String)
 
 class Debris(Base):
-    __tablename__ = "debris"
+    __tablename__ = "debris_tle"
 
-    debris_object_name = Column(String, primary_key=True)
-    debris_object_id = Column(String)
-    debris_epoch = Column(String)
-    debris_mean_motion = Column(String)
-    debris_eccentricity = Column(String)
-    debris_inlcination = Column(String)
-    debris_ra_of_asc_node = Column(String)
-    debris_arg_of_pericenter = Column(String)
-    debris_mean_anomaly = Column(String)
-    debris_ephemeris_type = Column(String)
-    debris_classification_type = Column(String)
-    debris_norad_cat_id = Column(Integer, ForeignKey("satcat.satcat_norad_cat_id"))
-    debris_element_set_no = Column(String)
-    debris_rev_at_epoch = Column(String)
-    debris_bstar = Column(String)
-    debris_mean_motion_dot = Column(String)
-    debris_mean_motion_ddot = Column(String)
-    debris_owner = Column(String)
-    debris_launch_date = Column(String)
-    debris_launch_site = Column(String)
-    debris_decay_date = Column(String)
+    debristle_object_name = Column(String)
+    debristle_tle1 = Column(String, primary_key=True)
+    debristle_tle2 = Column(String)
 
 class Misc(Base):
     __tablename__ = "misc"

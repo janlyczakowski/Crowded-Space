@@ -1,4 +1,4 @@
-from typing import List, Union
+from typing import List, Union, Tuple
 from pydantic import BaseModel
 #schema actives
 class ActiveBase(BaseModel):
@@ -86,15 +86,16 @@ class Weather_ersBase(BaseModel):
 
 #debris schema
 class DebrisBase(BaseModel):
-    debris_object_name: str
-    debris_object_id: str
-    debris_norad_cat_id: int
-    debris_owner: str
-    debris_launch_date: str
-    debris_launch_site: str
-    debris_purpose: str
-    debris_tle1: str
-    debris_tle2: str
+    debristle_object_name: str
+    debristle_tle1: str
+    debristle_tle2: str
 
     class Config:
         orm_mode = True
+
+#class ActiveDebrisBase(BaseModel):
+   #active: List[ActiveBase]
+    #debris: List[DebrisBase]
+
+    #class Config:
+        #orm_mode = True
