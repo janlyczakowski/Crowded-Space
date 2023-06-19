@@ -27,3 +27,16 @@
   width: 300px;
   text-align: center;
 }
+
+/* .info_section {
+  position: absolute;
+  top: 7px;
+  left: -7px;
+}
+
+@media (min-width: 350px) {
+  .info_section {
+    top: 15px;
+    left: 0;
+  }
+} */

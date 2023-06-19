@@ -8,6 +8,7 @@ import { useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ErrorFallback from './UI/ErrorFallback';
 import { Html } from '@react-three/drei';
+import InfoSection from './components/InfoSection';
 
 function App() {
   console.log('app rendered');
@@ -73,6 +74,9 @@ function App() {
           </Suspense>
         </Canvas>
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <div className={styles.info_section}>
+          <InfoSection />
+        </div>
       </div>
     </ErrorFallback>
   );

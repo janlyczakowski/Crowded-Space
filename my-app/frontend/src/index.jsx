@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <Suspense fallback={<p>Data is loading...</p>}> */}
-    <FPSStats />
+    {/* <FPSStats /> */}
     <App />
     {/* </Suspense> */}
     {/* <Loader /> */}
