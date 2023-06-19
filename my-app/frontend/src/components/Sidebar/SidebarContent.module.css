@@ -19,7 +19,7 @@
   transition: background-color 250ms;
 }
 .nav_icon {
-  max-width: 40px;
+  max-width: 30px;
 }
 .nav_icon_wrapper:hover,
 .nav_icon_wrapper:focus {
@@ -28,4 +28,10 @@
 }
 .nav_icon_active {
   background-color: rgb(19, 0, 88);
+}
+
+@media (min-width: 400px) {
+  .nav_icon {
+    max-width: 40px;
+  }
 }

@@ -1,3 +1,9 @@
 .point_mesh {
   cursor: pointer;
 }
+.satellite {
+  color: grey;
+}
+.satellite_selected {
+  color: #adff2f;
+}

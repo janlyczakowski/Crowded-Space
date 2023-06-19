@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useThree } from '@react-three/fiber';
 import styles from './Sidebar.module.css';
 import { AiOutlineClose } from 'react-icons/ai';
+import { AiFillCaretLeft } from 'react-icons/ai';
 import { HiChevronDoubleLeft, HiChevronDoubleRight } from 'react-icons/hi';
 import { useMediaQuery } from 'react-responsive';
 import { useState } from 'react';
