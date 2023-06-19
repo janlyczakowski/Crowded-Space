@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-function DataFetcher({ url, render }) {
+function useDataFetcher(url) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -24,15 +24,7 @@ function DataFetcher({ url, render }) {
     fetchData();
   }, [url]);
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
-
-  return render(data);
+  return { data, loading, error };
 }
 
-export default DataFetcher;
+export default useDataFetcher;

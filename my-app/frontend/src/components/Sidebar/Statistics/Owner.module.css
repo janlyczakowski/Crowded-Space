@@ -1,0 +1,28 @@
+.wrapper {
+  width: 100%;
+  max-width: 80%;
+  margin: auto;
+}
+.title {
+  color: white;
+  text-align: center;
+  margin-top: 1.5em;
+}
+
+.description {
+  text-align: center;
+  color: white;
+  margin: 1em auto 2em auto;
+  font-size: 0.75em;
+  max-width: 400px;
+}
+.chart {
+  height: 45vh;
+  max-height: 400px;
+}
+
+@media (min-width: 400px) {
+  .description {
+    font-size: 1em;
+  }
+}
