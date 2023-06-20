@@ -7,8 +7,11 @@ import Owner from '../Sidebar/Statistics/Owner';
 import Purpose from '../Sidebar/Statistics/Purpose';
 import Debris from '../Sidebar/Statistics/Debris';
 
-function Statistics() {
-  const [activeButton, setActiveButton] = useState('owner');
+function Statistics(props) {
+  // const [activeButton, setActiveButton] = useState('owner');
+  const { activeButton, setActiveButton } = props;
+
+  console.log(activeButton);
   console.log('Statistics rendered');
 
   let owner_btn_style =

@@ -5,9 +5,13 @@ import { useEffect, useState } from 'react';
 import StoryTelling from './StoryTelling';
 import Statistics from './Statistics';
 
-function SidebarContent() {
-  const [activeNavigation, setActiveNavigation] = useState('storytelling');
-
+function SidebarContent(props) {
+  const {
+    activeNavigation,
+    setActiveNavigation,
+    activeButton,
+    setActiveButton,
+  } = props;
   console.log('SidebarContent rendered');
   let storytelling_btn_style =
     activeNavigation === 'storytelling'
@@ -56,7 +60,12 @@ function SidebarContent() {
       </div>
       <div className={styles.content_container}>
         {activeNavigation === 'storytelling' && <StoryTelling />}
-        {activeNavigation === 'statistics' && <Statistics />}
+        {activeNavigation === 'statistics' && (
+          <Statistics
+            activeButton={activeButton}
+            setActiveButton={setActiveButton}
+          />
+        )}
       </div>
     </div>
   );

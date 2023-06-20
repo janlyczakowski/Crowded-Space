@@ -7,7 +7,7 @@ import EarthNormalMap from '../resources/Earth/8k_earth_normal_map.jpg';
 import EarthCloudsMap from '../resources/Earth/8k_earth_clouds.jpg';
 import StarsMap from '../resources/Stars/8k_stars.jpg';
 // import { getSatellitePosition } from '../getSatellitePosition';
-import Satellites from './Satellites';
+import Satellites from './Satellites/Satellites';
 
 import {
   OrbitControls,
@@ -19,7 +19,7 @@ import { TextureLoader } from 'three';
 import { useLoader, useFrame } from '@react-three/fiber';
 
 function Earth(props) {
-  console.log('component rendered ');
+  console.log('Earth rendered ');
   const { sidebarOpen } = props;
   const [colorMap, normalMap, specularMap, cloudsMap] = useLoader(
     TextureLoader,
@@ -94,7 +94,7 @@ function Earth(props) {
       {/* directional light?? */}
       <pointLight color={'#fffce8'} position={[2, 0, 2]} intensity={[1.2]} />
       <ambientLight intensity={0.8} />
-      <Satellites correctedPosition={sidebarOpen} />
+      {/* <Satellites correctedPosition={sidebarOpen} /> */}
       <mesh ref={cloudsRef}>
         <sphereGeometry args={[1.005, 32, 32]} />
         <meshPhongMaterial
@@ -124,7 +124,7 @@ function Earth(props) {
           zoomSpeed={0.5}
           panSpeed={0.5}
           rotateSpeed={0.5}
-          maxDistance={10} // max zoom out 90
+          maxDistance={18} // max zoom out 90
           minDistance={1.3} // max zoom in
         />
       </mesh>

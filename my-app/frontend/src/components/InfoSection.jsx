@@ -26,7 +26,7 @@ function InfoSection() {
         <div className={styles.info_wrapper}>
           <Logo className={styles.info_logo} />
           <p className={styles.info_resources} onClick={onClickHandler}>
-            Resources
+            About
           </p>
         </div>
       </div>

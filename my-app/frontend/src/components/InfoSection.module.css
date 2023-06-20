@@ -56,17 +56,17 @@
   left: -7px;
 }
 
-@media (min-width: 350px) {
+@media (min-width: 500px) {
   .info_section {
     top: 15px;
     left: 0;
   }
   .info_resources {
-    font-size: 0.9em;
+    font-size: 1.1em;
   }
   .info_wrapper {
     /* display: flex; */
-    max-width: 180px;
+    max-width: 170px;
     /* align-items: center; */
     /* width: 130px; */
   }

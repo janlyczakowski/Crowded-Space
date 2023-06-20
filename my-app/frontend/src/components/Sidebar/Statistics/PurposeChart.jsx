@@ -11,7 +11,6 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
-import config from '../../../config.json';
 
 const data = [
   {
@@ -40,7 +39,7 @@ const data = [
   },
 ];
 
-const colors = config.colors_owners;
+const colors = ['#8884d8', '#82ca9d', '#ff4000', '#581f18', '#f6Ae2d'];
 
 function CustomTooltip({ active, payload, label }) {
   if (active && payload && payload.length) {
@@ -51,7 +50,7 @@ function CustomTooltip({ active, payload, label }) {
   return null;
 }
 
-function OwnerChart() {
+function PurposeChart() {
   //   static demoUrl = 'https://codesandbox.io/s/simple-bar-chart-tpz8r';
 
   return (
@@ -89,4 +88,4 @@ function OwnerChart() {
   );
 }
 
-export default OwnerChart;
+export default PurposeChart;

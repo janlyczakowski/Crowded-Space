@@ -1,6 +1,13 @@
 {
-  "url": "https://raw.githubusercontent.com/lennartfynn/glowing-api/main/data/active_0_100.json",
-  "user": "lennartfynn",
-  "repo": "glowing-api",
-  "path": ""
+  "all_active_satellites": "https://raw.githubusercontent.com/lennartfynn/glowing-api/main/data/active_all_new.json",
+  "all_space_objects": "https://raw.githubusercontent.com/lennartfynn/glowing-api/main/data/active_debris_all_new.json",
+  "all_space_debris": "https://raw.githubusercontent.com/lennartfynn/glowing-api/main/data/debris_all_new.json",
+  "purpose": {
+    "weather": "https://raw.githubusercontent.com/lennartfynn/glowing-api/main/data/weather_all_new.json",
+    "science": "https://raw.githubusercontent.com/lennartfynn/glowing-api/main/data/science_all_new.json",
+    "navigation": "https://raw.githubusercontent.com/lennartfynn/glowing-api/main/data/nav_all_new.json",
+    "miscellaneous": "https://raw.githubusercontent.com/lennartfynn/glowing-api/main/data/misc_all_new.json",
+    "communication": "https://raw.githubusercontent.com/lennartfynn/glowing-api/main/data/comm_all_new.json"
+  },
+  "colors_owners": ["#8884d8", "#82ca9d", "#ff4000", "#581f18", "#f6Ae2d"]
 }

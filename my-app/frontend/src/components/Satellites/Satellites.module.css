@@ -1,0 +1,40 @@
+/* @font-face {
+  font-family: 'Monitorica';
+  src: local('Monitorica'),
+    url('./resources/fonts/Monitorica-Rg.otf') format('truetype');
+  font-weight: regular;
+} */
+.point_mesh {
+  cursor: pointer;
+}
+.satellite {
+  color: grey;
+}
+.satellite_selected {
+  color: #adff2f;
+}
+.loading,
+.error {
+  font-size: 1.2em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Monitorica, 'Roboto', 'sans-serif';
+}
+
+.loading_moved {
+  font-size: 1.2em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: white;
+  font-family: Monitorica, 'Roboto', 'sans-serif';
+  transform: translate(-230px, -20px);
+}
+.loading {
+  color: white;
+}
+.error {
+  color: red;
+}

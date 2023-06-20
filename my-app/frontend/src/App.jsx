@@ -9,13 +9,24 @@ import { useMediaQuery } from 'react-responsive';
 import ErrorFallback from './UI/ErrorFallback';
 import { Html } from '@react-three/drei';
 import InfoSection from './components/InfoSection';
+import Satellites from './components/Satellites/Satellites';
+// import useDataFetcher from './hooks/useDataFetcher';
+import config from './config.json';
 
 function App() {
   console.log('app rendered');
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarActiveNavigation, setSidebarActiveNavigation] =
+    useState('storytelling');
+  const [sidebarActiveButton, setSidebarActiveButton] = useState('owner');
   const canvasRef = useRef(null);
   const isBigScreen = useMediaQuery({ query: '(min-width: 1000px)' });
+  const url_active_satellites = config.all_active_satellites;
+  const url_active_satellites_purpose = config.all_active_satellites; // add appropriate url
+  const url_space_debris = config.all_space_debris;
 
+  // const url = config.url_space_debris;
+  // const { data, loading, error } = useDataFetcher(url);
   // const navBtnStyle = isBigScreen ?
 
   // let sidebarStyle = sidebarOpen
@@ -54,6 +65,19 @@ function App() {
     }
   }, [sidebarOpen, isBigScreen]);
 
+  console.log(sidebarActiveNavigation);
+  console.log(sidebarActiveButton);
+
+  const showActiveSatellite = sidebarActiveNavigation === 'storytelling';
+  const showActiveSatelliteByOwner =
+    sidebarActiveNavigation === 'statistics' && sidebarActiveButton === 'owner';
+  const showActiveSatelliteByPurpose =
+    sidebarActiveNavigation === 'statistics' &&
+    sidebarActiveButton === 'purpose';
+  const showSpaceDebrisByCollision =
+    sidebarActiveNavigation === 'statistics' &&
+    sidebarActiveButton === 'debris';
+
   return (
     <ErrorFallback>
       <div className={styles.content_wrapper}>
@@ -69,11 +93,51 @@ function App() {
               </Html>
             }
           >
+            {showActiveSatellite && (
+              <Satellites
+                sidebarOpen={sidebarOpen}
+                isBigScreen={isBigScreen}
+                url={url_active_satellites}
+                styling="active"
+              />
+            )}
+            {showActiveSatelliteByOwner && (
+              <Satellites
+                sidebarOpen={sidebarOpen}
+                isBigScreen={isBigScreen}
+                url={url_active_satellites}
+                styling="owner"
+              />
+            )}
+            {/* {showActiveSatelliteByPurpose && (
+              <Satellites
+              sidebarOpen={sidebarOpen}
+              isBigScreen={isBigScreen}
+              url={url_active_satellites_purpose}
+              styling="purpose"
+            />
+            )} */}
+            {showSpaceDebrisByCollision && (
+              <Satellites
+                sidebarOpen={sidebarOpen}
+                isBigScreen={isBigScreen}
+                url={url_space_debris}
+                styling="debris"
+              />
+            )}
+
             <Earth sidebarOpen={sidebarOpen} />
             <SkyBox />
           </Suspense>
         </Canvas>
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <Sidebar
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+          activeNavigation={sidebarActiveNavigation}
+          setActiveNavigation={setSidebarActiveNavigation}
+          activeButton={sidebarActiveButton}
+          setActiveButton={setSidebarActiveButton}
+        />
         {/* <div className={styles.info_section}> */}
         <InfoSection />
         {/* </div> */}

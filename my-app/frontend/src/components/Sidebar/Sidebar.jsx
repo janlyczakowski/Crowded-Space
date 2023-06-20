@@ -11,7 +11,15 @@ import { DEG2RAD } from 'three/src/math/MathUtils';
 
 function Sidebar(props) {
   console.log('sidebar rendered');
-  const { sidebarOpen, setSidebarOpen } = props;
+  const {
+    sidebarOpen,
+    setSidebarOpen,
+    activeNavigation,
+    setActiveNavigation,
+    activeButton,
+    setActiveButton,
+  } = props;
+
   // const [sidebarOpen, setSidebarOpen] = useState(false);
   const isBigScreen = useMediaQuery({ query: '(min-width: 1000px)' });
 
@@ -27,7 +35,12 @@ function Sidebar(props) {
     <>
       <div className={styles.wrapper}>
         <div className={sidebarStyle}>
-          <SidebarContent />
+          <SidebarContent
+            activeNavigation={activeNavigation}
+            setActiveNavigation={setActiveNavigation}
+            activeButton={activeButton}
+            setActiveButton={setActiveButton}
+          />
         </div>
         <div className={styles.btn_container}>
           {!sidebarOpen && (
