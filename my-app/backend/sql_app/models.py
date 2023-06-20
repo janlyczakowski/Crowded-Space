@@ -1,7 +1,8 @@
 #ToDo: relations
 #import packages
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Date
 from sqlalchemy.orm import relationship
+from datetime import date
 #take Base class from database.py
 from database import Base
 #define classes ->tables from postgres db
@@ -12,12 +13,13 @@ class Active(Base):
     active_object_id = Column(String)
     active_norad_cat_id = Column(Integer, ForeignKey("satcat.satcat_norad_cat_id"))
     active_owner = Column(String)
-    active_launch_date = Column(String)
+    active_launch_date = Column(Date)
     active_launch_site = Column(String)
     active_decay_date = Column(String)
     active_purpose = Column(String)
     active_tle1 = Column(String)
     active_tle2 = Column(String)
+    active_type = Column(String)
 
 class Communications(Base):
     __tablename__ = "communications"
@@ -31,6 +33,7 @@ class Communications(Base):
     comm_decay_date = Column(String)
     comm_tle1 = Column(String)
     comm_tle2 = Column(String)
+    comm_type = Column(String)
 
 class Debris(Base):
     __tablename__ = "debris_tle"
@@ -38,6 +41,7 @@ class Debris(Base):
     debristle_object_name = Column(String)
     debristle_tle1 = Column(String, primary_key=True)
     debristle_tle2 = Column(String)
+    debristle_type = Column(String)
 
 class Misc(Base):
     __tablename__ = "misc"
@@ -51,6 +55,7 @@ class Misc(Base):
     misc_decay_date = Column(String)
     misc_tle1 = Column(String)
     misc_tle2 = Column(String)
+    misc_type = Column(String)
 
 class Navigation(Base):
     __tablename__ = "navigation"
@@ -64,6 +69,7 @@ class Navigation(Base):
     nav_decay_date = Column(String)
     nav_tle1 = Column(String)
     nav_tle2 = Column(String)
+    nav_type = Column(String)
 
 class Satcat(Base):
     __tablename__ = "satcat"
@@ -98,6 +104,7 @@ class Science(Base):
     science_decay_date = Column(String)
     science_tle1 = Column(String)
     science_tle2 = Column(String)
+    science_type = Column(String)
 class Weather_ers(Base):
     __tablename__ = "weather_ers"
 
@@ -110,3 +117,4 @@ class Weather_ers(Base):
     weather_decay_date = Column(String)
     weather_tle1 = Column(String)
     weather_tle2 = Column(String)
+    weather_type = Column(String)

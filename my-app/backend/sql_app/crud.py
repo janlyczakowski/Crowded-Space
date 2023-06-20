@@ -1,14 +1,12 @@
 from sqlalchemy.orm import Session
 import models
-from datetime import datetime
-#1 call active & debris
-#def get_activedebris(db: Session, skip: int = 0, limit: int = 15000):
-   # return db.query(models.ActiveDebris).offset(skip).limit(limit).all()
-#2 call actives
-def get_active(db: Session, active_launch_date:int):
-    launch_date = datetime(1970, 1, 1).date()
-    return db.query(models.Active).filter(models.Active.active_launch_date < launch_date).all()
-
+import schemas
+from datetime import date
+#1 call actives by launch date
+def get_active_launch(db: Session, active_launch_date: date, skip: int = 0, limit: int = 100):
+    launch_date = date(1970, 1, 1).date()
+    return db.query(models.Active).filter(models.Active.active_launch_date < launch_date).offset(skip).limit(limit).all()
+#call2 actives
 def get_actives(db: Session, skip: int = 0, limit: int = 7834):
     return db.query(models.Active).offset(skip).limit(limit).all()
 
@@ -17,7 +15,8 @@ def get_debris(db: Session, skip: int = 0, limit: int = 3451):
     return db.query(models.Debris).offset(skip).limit(limit).all()
 #4 call communications
 def get_communication(db: Session, skip: int = 0, limit: int = 6689):
-    return db.query(models.Communications).offset(skip).limit(limit).all()
+    communication = db.query(models.Communications).offset(skip).limit(limit).all()
+    return [schemas.CommunicationsBase.from_orm(i) for i in communication]
 #5 call misc
 def get_misc(db: Session, skip: int = 0, limit: int = 148):
     return db.query(models.Misc).offset(skip).limit(limit).all()

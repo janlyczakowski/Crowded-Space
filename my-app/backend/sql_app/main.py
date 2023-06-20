@@ -3,9 +3,12 @@ import uvicorn
 from typing import List
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
-import crud, models, schemas
+import crud
+import models
+import schemas
 from database import SessionLocal, engine
-from datetime import datetime
+from fastapi.encoders import jsonable_encoder
+from datetime import date
 #initialize database
 
 models.Base.metadata.create_all(bind=engine)
@@ -26,16 +29,8 @@ def get_db():
 #call active launch_date
 @app.get("/activelaunch/", response_model=List[schemas.ActiveBase])
 def read_active(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    active_launch = crud.get_actives(db, skip=skip, limit=limit)
+    active_launch = crud.get_active_launch(models.Active.active_launch_date<crud.launch_date, db, skip=skip, limit=limit)
     return active_launch
-
-#call active and debris
-#call actives and debris
-#@app.get("/activedebris/", response_model=List[schemas.ActiveDebrisBase])
-#def read_activedebris(skip: int = 0, limit: int = 7834, db: Session = Depends(get_db)):
-    #active = crud.get_actives(db, skip=skip, limit=limit)
-    #debris = crud.get_debris(db, skip=skip, limit=limit)
-    #return schemas.ActiveDebrisBase(active=active, debris=debris)
 
 #call actives
 @app.get("/active/", response_model=List[schemas.ActiveBase])
@@ -76,6 +71,6 @@ def read_weather(skip: int = 0, limit: int = 635, db: Session = Depends(get_db))
 
 #start uvicorn
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8001, log_level="info")
+    uvicorn.run(app, host="127.0.0.1", port=8000, log_level="info")
 
 
