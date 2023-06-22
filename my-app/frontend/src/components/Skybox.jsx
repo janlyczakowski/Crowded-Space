@@ -13,9 +13,9 @@ function SkyBox() {
   const loader = new CubeTextureLoader();
 
   const texture = loader.load([right, left, top, bottom, front, back]);
-  const axesHelper = new AxesHelper(5);
+  // const axesHelper = new AxesHelper(5);
   scene.background = texture;
-  scene.add(axesHelper);
+  // scene.add(axesHelper);
   return null;
 }
 

@@ -1,0 +1,29 @@
+.wrapper {
+  overflow-y: scroll;
+  width: 100%;
+  display: flex;
+  height: calc(100vh - 50px);
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline {
+  display: flex;
+  margin-left: 1em;
+  width: 20%;
+  min-width: 60px;
+}
+
+.content {
+  width: 80%;
+  color: white;
+  align-self: flex-start;
+  padding-top: 2em;
+}
+
+@media (min-width: 500px) {
+  .timeline {
+    margin: 0;
+    justify-content: center;
+  }
+}

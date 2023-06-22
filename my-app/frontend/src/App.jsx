@@ -93,22 +93,22 @@ function App() {
               </Html>
             }
           >
-            {showActiveSatellite && (
+            {/* {showActiveSatellite && (
               <Satellites
                 sidebarOpen={sidebarOpen}
                 isBigScreen={isBigScreen}
                 url={url_active_satellites}
                 styling="active"
               />
-            )}
-            {showActiveSatelliteByOwner && (
+            )} */}
+            {/* {showActiveSatelliteByOwner && (
               <Satellites
                 sidebarOpen={sidebarOpen}
                 isBigScreen={isBigScreen}
                 url={url_active_satellites}
                 styling="owner"
               />
-            )}
+            )} */}
             {/* {showActiveSatelliteByPurpose && (
               <Satellites
               sidebarOpen={sidebarOpen}
@@ -117,14 +117,14 @@ function App() {
               styling="purpose"
             />
             )} */}
-            {showSpaceDebrisByCollision && (
+            {/* {showSpaceDebrisByCollision && (
               <Satellites
                 sidebarOpen={sidebarOpen}
                 isBigScreen={isBigScreen}
                 url={url_space_debris}
                 styling="debris"
               />
-            )}
+            )} */}
 
             <Earth sidebarOpen={sidebarOpen} />
             <SkyBox />

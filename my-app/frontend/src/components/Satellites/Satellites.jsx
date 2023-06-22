@@ -13,7 +13,7 @@ import { useThree } from '@react-three/fiber';
 function Satellites(props) {
   console.log('Satelites rendered');
   const { sidebarOpen, isBigScreen, url, styling } = props;
-
+  console.log(url);
   const satellitesRef = useRef([]);
   // const satelliteRef = useRef();
 
@@ -62,15 +62,15 @@ function Satellites(props) {
     } else if (styling === 'debris') {
       if (satellite.object_name === 'FENGYUN 1C DEB ') {
         sat_color = '#f6Ae2d';
-        console.log('fengyum');
+        // console.log('fengyum');
       } else if (satellite.object_name === 'COSMOS 1408 DEB') {
         sat_color = '#8884d8';
-        console.log('COSMOS');
+        // console.log('COSMOS');
       } else if (
         satellite.object_name === 'COSMOS 2251 DEB' ||
         satellite.object_name === 'IRIDIUM 33 DEB '
       ) {
-        console.log('iridium');
+        // console.log('iridium');
         sat_color = '#ff4000';
       }
     }
@@ -82,6 +82,11 @@ function Satellites(props) {
     sidebarOpen && isBigScreen
       ? `${styles.loading_moved}`
       : `${styles.loading}`;
+
+  const example_Object = {
+    tle1: '1 37314U 93036BKE 23169.50153635  .09013724  18479-5  58919-2 0  9992',
+    tle2: '2 37314  73.8727  78.2517 0025174 215.3275 144.6305 16.16292972727507',
+  };
 
   return (
     <>
@@ -97,6 +102,7 @@ function Satellites(props) {
       )}
       {!loading &&
         data.map((satellite, index) => {
+          console.log(satellite);
           // const isHovered = hoveredIndex === index;
           return (
             <mesh
@@ -106,15 +112,14 @@ function Satellites(props) {
               // onPointerOver={(e) => onPointerOverHandler(e, index)}
               // onPointerOut={onPointerOutHandler}
             >
-              <sphereGeometry args={[0.006, 32, 32]} />
+              <sphereGeometry args={[0.005, 32, 32]} />
               <meshBasicMaterial
                 // color={'red'}
                 color={calculateColor(satellite)}
               />
             </mesh>
           );
-        })}{' '}
-      */
+        })}
     </>
   );
 }

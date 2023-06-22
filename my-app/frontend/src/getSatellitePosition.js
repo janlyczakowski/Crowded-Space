@@ -40,7 +40,7 @@ export function getSatellitePosition(tleLine1, tleLine2) {
   const [x, y, z] = calcPosFromLatLonRad(
     radToDeg(longitude),
     radToDeg(latitude),
-    1 + altitude / 4000
+    1 + altitude / 8000
   );
 
   return [x, y, z];
