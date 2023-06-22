@@ -2,9 +2,12 @@ from sqlalchemy.orm import Session
 import models
 import schemas
 from datetime import date
+
+#def get_launch_date(db: Session, active_launch_date: date):
+    #return db.query(models.Active).filter(models.Active.active_launch_date == active_launch_date).first()
 #1 call actives by launch date
-def get_active_launch(db: Session, active_launch_date: date, skip: int = 0, limit: int = 100):
-    launch_date = date(1970, 1, 1).date()
+launch_date = date(2009, 2, 10)
+def get_active_launch(db: Session, launch_date: date = date(2009, 2, 10), skip: int = 0, limit: int = 100):
     return db.query(models.Active).filter(models.Active.active_launch_date < launch_date).offset(skip).limit(limit).all()
 #call2 actives
 def get_actives(db: Session, skip: int = 0, limit: int = 7834):
