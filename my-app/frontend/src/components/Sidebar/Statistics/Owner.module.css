@@ -1,7 +1,10 @@
 .wrapper {
   width: 100%;
   max-width: 80%;
+  /* height: calc(100vh - 50px); */
   margin: auto;
+  /* display: flex; */
+  /* overflow-y: scroll; */
 }
 .title {
   color: white;
@@ -15,10 +18,14 @@
   margin: 1em auto 2em auto;
   font-size: 0.75em;
   max-width: 400px;
+  line-height: 1.6;
 }
-.chart {
+.chart_owner {
   height: 45vh;
-  max-height: 400px;
+  max-height: 300px;
+  max-width: 400px;
+  margin: auto;
+  margin-bottom: 1em;
 }
 
 @media (min-width: 400px) {

@@ -24,7 +24,9 @@ function STFengyun() {
         mitigate space debris, promote responsible space conduct, and ensure the
         long-term viability of space activities.
       </p>
-      <p className={styles.sat_info}>Satellites launched till that day: 1</p>
+      <p className={styles.sat_info}>
+        Satellites launched till that day: 11397
+      </p>
       <img
         src={image}
         alt="Chinese TV Rendering of Fengyun Satellite"

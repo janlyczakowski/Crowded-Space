@@ -6,7 +6,7 @@ import { radToDeg } from 'three/src/math/MathUtils';
 export function getSatellitePosition(tleLine1, tleLine2) {
   // Initialize a satellite record
   const satrec = twoline2satrec(tleLine1, tleLine2);
-  // console.log(satrec);
+
   //  Propagate time using JavaScript Date
   const positionAndVelocity = propagate(satrec, new Date());
   const gmst = gstime(new Date());
@@ -14,9 +14,8 @@ export function getSatellitePosition(tleLine1, tleLine2) {
   // The position_velocity result is a key-value pair of ECI coordinates.
   // These are the base results from which all other coordinates are derived.
   const positionEci = positionAndVelocity.position;
-  const velocityEci = positionAndVelocity.velocity;
+  // const velocityEci = positionAndVelocity.velocity;
 
-  // console.log(velocityEci);
   // Get geodetic position
   const positionGd = eciToGeodetic(positionEci, gmst);
 
@@ -36,7 +35,7 @@ export function getSatellitePosition(tleLine1, tleLine2) {
     return [x, y, z];
   }
 
-  // Assuming that altitude 0 is equal to radius 1 approximate scalar altitude/4000 was used for visualization of altitude of satellite
+  // Assuming that altitude 0 is equal to radius 1 approximate scalar altitude/8000 was used for visualization of altitude of satellite
   const [x, y, z] = calcPosFromLatLonRad(
     radToDeg(longitude),
     radToDeg(latitude),

@@ -2,10 +2,7 @@
   height: 100vh;
   width: 100vw;
 }
-/* .main_content {
-  height: 100vh;
-  width: 100vw;
-} */
+
 .fallback_wrapper {
   width: 100vw;
   height: 100vh;
@@ -27,16 +24,37 @@
   width: 300px;
   text-align: center;
 }
-
-/* .info_section {
+.active_sat_legend {
   position: absolute;
-  top: 7px;
-  left: -7px;
+  bottom: 10px;
+  left: 15px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
 }
-
-@media (min-width: 350px) {
-  .info_section {
-    top: 15px;
-    left: 0;
+.active_sat_icon {
+  margin-right: 1em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #16ff6f;
+}
+.active_sat_text {
+  font-size: 0.75em;
+  color: white;
+  letter-spacing: 0.5px;
+}
+@media (min-width: 500px) {
+  .active_sat_icon {
+    width: 10px;
+    height: 10px;
   }
-} */
+  .active_sat_text {
+    font-size: 0.9em;
+    letter-spacing: 1px;
+  }
+  .active_sat_legend {
+    bottom: 20px;
+    left: 25px;
+  }
+}

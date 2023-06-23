@@ -23,7 +23,7 @@ function STCommercialSatellite() {
         commercial space industry and set the stage for the proliferation of
         satellite-based services that we rely on today.
       </p>
-      <p className={styles.sat_info}>Satellites launched till that day: 1</p>
+      <p className={styles.sat_info}>Satellites launched till that day: 561</p>
       <img src={image} alt="Yuri Gagarin" className={styles.image} />
       <div className={styles.attribution}>
         <p className={styles.attribution_text}>NASA public domain</p>

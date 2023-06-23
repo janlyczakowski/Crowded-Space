@@ -16,7 +16,7 @@ import { ReactComponent as TimeToActSvg } from '../../../resources/Icons/milesto
 const CustomSlider = styled(Slider)(({ theme }) => ({
   // Custom styles for the Slider component
   '& .MuiSlider-thumb': {
-    width: 40, // Adjust the size of the thumb circle
+    width: 40,
     height: 40,
     backgroundColor: 'rgb(19, 0, 88)',
     display: 'flex',
@@ -34,14 +34,11 @@ const CustomSliderWithIcon = (props) => {
   const { onSliderChangeHandler } = props;
   console.log('custom slider rendered');
 
-  // const milestoneIcon = <SputnikSvg style={{ width: '30px' }} />;
-
   function CustomThumbComponent(props) {
     const { children, ...other } = props;
     return (
       <SliderThumb {...other}>
         {children}
-        {/* {milestoneIcon} */}
         {children.props.value === 99 && (
           <SputnikSvg style={{ width: '30px' }} />
         )}

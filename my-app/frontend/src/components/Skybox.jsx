@@ -1,5 +1,4 @@
 import { useThree } from '@react-three/fiber';
-import { AxesHelper } from 'three';
 import { CubeTextureLoader } from 'three';
 import right from '../resources/Stars/skybox/right.png';
 import left from '../resources/Stars/skybox/left.png';

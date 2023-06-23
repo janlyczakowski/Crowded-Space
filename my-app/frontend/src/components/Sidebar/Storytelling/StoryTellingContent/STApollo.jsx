@@ -24,7 +24,7 @@ function STApollo() {
         ingenuity, determination, and technological prowess, inspiring future
         generations to push the boundaries of what is possible in space.
       </p>
-      <p className={styles.sat_info}>Satellites launched till that day: 1</p>
+      <p className={styles.sat_info}>Satellites launched till that day: 1628</p>
       <img src={image} alt="Landing on the Moon" className={styles.image} />
       <div className={styles.attribution}>
         <p className={styles.attribution_text}>Public domain</p>

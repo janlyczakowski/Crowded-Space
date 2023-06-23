@@ -1,0 +1,52 @@
+.wrapper {
+  width: 100%;
+  max-width: 80%;
+  margin: auto;
+}
+.title {
+  color: white;
+  text-align: center;
+  margin-top: 1.5em;
+}
+
+.description {
+  text-align: center;
+  color: white;
+  margin: 1em auto 2em auto;
+  font-size: 0.75em;
+  max-width: 400px;
+  line-height: 1.6;
+}
+.event_container {
+  text-align: left;
+}
+.debris_china,
+.debris_usa,
+.debris_russia {
+  font-weight: bold;
+}
+.debris_china {
+  color: #f6ae2d;
+}
+.debris_usa {
+  color: #ff4000;
+}
+.debris_russia {
+  color: #822e81;
+}
+
+.attribution_link {
+  text-decoration: none;
+  color: #a7caed;
+  transition: color 250ms;
+}
+.attribution_link:focus,
+.attribution_link:hover {
+  color: #90adca;
+}
+
+@media (min-width: 400px) {
+  .description {
+    font-size: 1em;
+  }
+}

@@ -25,7 +25,7 @@ function STSkylab() {
         of international cooperation and a vital platform for scientific space
         research.
       </p>
-      <p className={styles.sat_info}>Satellites launched till that day: 1</p>
+      <p className={styles.sat_info}>Satellites launched till that day: 2536</p>
       <img src={image} alt="Skylab" className={styles.image} />
       <div className={styles.attribution}>
         <p className={styles.attribution_text}>NASA public domain</p>

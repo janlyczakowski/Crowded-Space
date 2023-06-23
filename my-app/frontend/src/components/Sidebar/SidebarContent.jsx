@@ -1,7 +1,6 @@
 import styles from './SidebarContent.module.css';
 import { ReactComponent as StoryTellingIcon } from '../../resources/Icons/ui_buttons/storytelling.svg';
 import { ReactComponent as StatisticsIcon } from '../../resources/Icons/ui_buttons/statistics.svg';
-import { useEffect, useState } from 'react';
 import StoryTelling from './StoryTelling';
 import Statistics from './Statistics';
 
@@ -12,7 +11,6 @@ function SidebarContent(props) {
     activeButton,
     setActiveButton,
   } = props;
-  console.log('SidebarContent rendered');
   let storytelling_btn_style =
     activeNavigation === 'storytelling'
       ? `${styles.nav_icon_wrapper} ${styles.nav_icon_active}`

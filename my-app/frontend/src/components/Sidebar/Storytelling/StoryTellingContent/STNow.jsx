@@ -31,7 +31,9 @@ function STNow() {
         exploration, and ensure a sustainable and secure future for space
         activities.
       </p>
-      <p className={styles.sat_info}>Satellites launched till that day: 1</p>
+      <p className={styles.sat_info}>
+        Satellites launched till 2023-01-01: 20859
+      </p>
       <img
         src={image}
         alt="Collision between Iridium 33 and Kosmos 2251 -- debris field after 50 minutes"

@@ -22,7 +22,7 @@ function STGagarin() {
         United States and the Soviet Union, inspiring ambitious space
         exploration efforts in the coming years.
       </p>
-      <p className={styles.sat_info}>Satellites launched till that day: 1</p>
+      <p className={styles.sat_info}>Satellites launched till that day: 82</p>
       <img src={image} alt="Yuri Gagarin" className={styles.image} />
       <div className={styles.attribution}>
         <p className={styles.attribution_text}>

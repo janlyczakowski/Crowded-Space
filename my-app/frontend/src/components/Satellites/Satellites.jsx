@@ -1,21 +1,13 @@
-import * as THREE from 'three';
-import { Html, Point, Points, Sphere } from '@react-three/drei';
-import { useState, useRef, useEffect } from 'react';
+import { Html } from '@react-three/drei';
+import { useRef } from 'react';
 import { getSatellitePosition } from '../../getSatellitePosition';
 import { useFrame } from '@react-three/fiber';
 import styles from './Satellites.module.css';
 import useDataFetcher from '../../hooks/useDataFetcher';
-import config from '../../config.json';
-import { useMemo } from 'react';
-import { BufferAttribute } from 'three';
-import { useThree } from '@react-three/fiber';
 
 function Satellites(props) {
-  console.log('Satelites rendered');
   const { sidebarOpen, isBigScreen, url, styling } = props;
-  console.log(url);
   const satellitesRef = useRef([]);
-  // const satelliteRef = useRef();
 
   const { data, loading, error } = useDataFetcher(url);
 
@@ -31,8 +23,6 @@ function Satellites(props) {
   //   document.body.style.cursor = 'auto';
   // };
 
-  console.log(loading);
-  console.log(data);
   useFrame(() => {
     satellitesRef.current.forEach((satellite, index) => {
       const position = getSatellitePosition(data[index].tle1, data[index].tle2);
@@ -41,36 +31,54 @@ function Satellites(props) {
       satellite.position.z = position[2];
     });
   });
-  // const sat_color = 'gray';
   const calculateColor = (satellite) => {
     // ["#8884d8", "#82ca9d", "#ff4000", "#581f18", "#f6Ae2d"]
-    // console.log(satellite);
     let sat_color;
     if (styling === 'active') {
-      sat_color = 'gray';
+      sat_color = '#16FF6F';
     } else if (styling === 'owner') {
       if (satellite.owner === 'US') {
         sat_color = '#8884d8';
       } else if (satellite.owner === 'PRC') {
         sat_color = '#ff4000';
       } else if (satellite.owner === 'UK') {
-        sat_color = '#82ca9d';
+        sat_color = '#822e81';
+      } else if (satellite.owner === 'CIS') {
+        sat_color = '#581f18';
+      } else if (satellite.owner === 'JPN') {
+        sat_color = '#f6Ae2d';
       } else {
         sat_color = 'gray';
       }
     } else if (styling === 'purpose') {
-    } else if (styling === 'debris') {
-      if (satellite.object_name === 'FENGYUN 1C DEB ') {
-        sat_color = '#f6Ae2d';
-        // console.log('fengyum');
-      } else if (satellite.object_name === 'COSMOS 1408 DEB') {
+      if (satellite.purpose === 'communications') {
         sat_color = '#8884d8';
-        // console.log('COSMOS');
+      } else if (satellite.purpose === 'weather_ers') {
+        sat_color = '#ff4000';
+      } else if (satellite.purpose === 'navigation') {
+        sat_color = '#822e81';
+      } else if (satellite.purpose === 'science') {
+        sat_color = '#f6Ae2d';
+      } else {
+        sat_color = 'gray';
+      }
+    } else if (styling === 'debris') {
+      if (
+        satellite.object_name === 'FENGYUN 1C DEB ' ||
+        satellite.object_name === 'FENGYUN 1C '
+      ) {
+        sat_color = '#f6Ae2d';
+      } else if (
+        satellite.object_name === 'COSMOS 1408 DEB' ||
+        satellite.object_name === 'COSMOS 1408'
+      ) {
+        sat_color = '#822E81';
       } else if (
         satellite.object_name === 'COSMOS 2251 DEB' ||
-        satellite.object_name === 'IRIDIUM 33 DEB '
+        satellite.object_name === 'COSMOS 2251' ||
+        satellite.object_name === 'IRIDIUM 33 DEB ' ||
+        satellite.object_name === 'IRIDIUM 33 '
       ) {
-        // console.log('iridium');
         sat_color = '#ff4000';
       }
     }
@@ -83,11 +91,6 @@ function Satellites(props) {
       ? `${styles.loading_moved}`
       : `${styles.loading}`;
 
-  const example_Object = {
-    tle1: '1 37314U 93036BKE 23169.50153635  .09013724  18479-5  58919-2 0  9992',
-    tle2: '2 37314  73.8727  78.2517 0025174 215.3275 144.6305 16.16292972727507',
-  };
-
   return (
     <>
       {error && (
@@ -95,28 +98,28 @@ function Satellites(props) {
           <p className={styles.error}>{error}</p>
         </Html>
       )}
-      {loading && (
+      {loading && !(sidebarOpen && !isBigScreen) && (
         <Html>
           <p className={loadingStyle}>Loading...</p>
         </Html>
       )}
+      {loading && sidebarOpen && !isBigScreen && (
+        <Html center className={styles.loading_small_screen_wrapper}>
+          <div className={styles.loading_small_screen}>
+            <p className={styles.loading_small_screen_text}>Loading...</p>
+          </div>
+        </Html>
+      )}
       {!loading &&
         data.map((satellite, index) => {
-          console.log(satellite);
-          // const isHovered = hoveredIndex === index;
           return (
             <mesh
               key={index}
               position={getSatellitePosition(satellite.tle1, satellite.tle2)}
               ref={(mesh) => (satellitesRef.current[index] = mesh)}
-              // onPointerOver={(e) => onPointerOverHandler(e, index)}
-              // onPointerOut={onPointerOutHandler}
             >
               <sphereGeometry args={[0.005, 32, 32]} />
-              <meshBasicMaterial
-                // color={'red'}
-                color={calculateColor(satellite)}
-              />
+              <meshBasicMaterial color={calculateColor(satellite)} />
             </mesh>
           );
         })}

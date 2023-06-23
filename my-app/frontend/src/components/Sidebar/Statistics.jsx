@@ -1,5 +1,4 @@
 import styles from './Statistics.module.css';
-import { useState } from 'react';
 import { ReactComponent as OwnerIcon } from '../../resources/Icons/ui_buttons/owner.svg';
 import { ReactComponent as PurposeIcon } from '../../resources/Icons/ui_buttons/purpose.svg';
 import { ReactComponent as DebrisIcon } from '../../resources/Icons/ui_buttons/debris.svg';
@@ -8,11 +7,7 @@ import Purpose from '../Sidebar/Statistics/Purpose';
 import Debris from '../Sidebar/Statistics/Debris';
 
 function Statistics(props) {
-  // const [activeButton, setActiveButton] = useState('owner');
   const { activeButton, setActiveButton } = props;
-
-  console.log(activeButton);
-  console.log('Statistics rendered');
 
   let owner_btn_style =
     activeButton === 'owner'
@@ -29,7 +24,7 @@ function Statistics(props) {
 
   const onClickNavBtnHandler = (e) => {
     e.stopPropagation();
-    console.log(e.target);
+
     let btn_id;
     if (e.target.nodeName === 'path') {
       btn_id = e.target.parentElement.parentElement.id;
@@ -54,9 +49,7 @@ function Statistics(props) {
           onClick={onClickNavBtnHandler}
           id="owner"
         >
-          {/* <div className={styles.nav_icon_wrapper}> */}
           <OwnerIcon className={styles.nav_icon} id="owner" />
-          {/* </div> */}
         </li>
         <li
           className={purpose_btn_style}
@@ -78,7 +71,6 @@ function Statistics(props) {
         {activeButton === 'purpose' && <Purpose />}
         {activeButton === 'debris' && <Debris />}
       </div>
-      {/* <h1 style={{ color: 'white' }}>Statistics</h1> */}
     </div>
   );
 }

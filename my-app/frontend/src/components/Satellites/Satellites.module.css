@@ -1,9 +1,3 @@
-/* @font-face {
-  font-family: 'Monitorica';
-  src: local('Monitorica'),
-    url('./resources/fonts/Monitorica-Rg.otf') format('truetype');
-  font-weight: regular;
-} */
 .point_mesh {
   cursor: pointer;
 }
@@ -21,8 +15,25 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: Monitorica, 'Roboto', 'sans-serif';
+  z-index: -1;
 }
-
+.loading_small_screen_wrapper {
+  width: 100vw;
+  height: calc(100vh - 100px);
+}
+.loading_small_screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(9, 0, 40);
+}
+.loading_small_screen_text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
 .loading_moved {
   font-size: 1.2em;
   position: absolute;

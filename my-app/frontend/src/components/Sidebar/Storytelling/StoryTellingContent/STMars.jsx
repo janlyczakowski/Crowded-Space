@@ -24,7 +24,9 @@ function STMars() {
         remained active until 2018, collectively transforming our knowledge of
         the Martian surface and paving the way for future Mars missions.
       </p>
-      <p className={styles.sat_info}>Satellites launched till that day: 1</p>
+      <p className={styles.sat_info}>
+        Satellites launched till 2004-01-04: 10954
+      </p>
       <img src={image} alt="Mars robot" className={styles.image} />
       <div className={styles.attribution}>
         <p className={styles.attribution_text}>NASA public domain</p>

@@ -23,7 +23,7 @@ function STGPS() {
         to our lives, enabling us to easily navigate, track our movements, and
         synchronize time globally.
       </p>
-      <p className={styles.sat_info}>Satellites launched till that day: 1</p>
+      <p className={styles.sat_info}>Satellites launched till that day: 3932</p>
       <img src={image} alt="GPS constellation" className={styles.image} />
       <div className={styles.attribution}>
         <p className={styles.attribution_text}>

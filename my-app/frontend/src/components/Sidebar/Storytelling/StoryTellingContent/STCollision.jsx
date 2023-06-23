@@ -25,7 +25,9 @@ function STCollision() {
         increased efforts to address the issue of space debris and ensure the
         long-term sustainability of space activities.
       </p>
-      <p className={styles.sat_info}>Satellites launched till that day: 1</p>
+      <p className={styles.sat_info}>
+        Satellites launched till that day: 11770
+      </p>
       <img
         src={image}
         alt="Collision between Iridium 33 and Kosmos 2251 -- debris field after 50 minutes"

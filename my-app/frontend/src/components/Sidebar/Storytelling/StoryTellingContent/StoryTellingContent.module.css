@@ -1,13 +1,10 @@
 .wrapper {
   width: 85%;
   height: 100%;
-  /* margin: auto; */
-  /* margin-right: 1em; */
 }
 .intro_text {
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
 }
 .title {
   width: 80%;
@@ -19,7 +16,6 @@
   width: 30%;
   text-align: right;
   margin-right: 1.5em;
-  /* justify-self: center; */
 }
 .sat_info {
   font-size: 0.9em;
@@ -49,11 +45,11 @@
 .attribution_link {
   text-decoration: none;
   color: #a7caed;
+  transition: color 250ms;
 }
 .attribution_link:focus,
 .attribution_link:hover {
-  font-weight: bold;
-  letter-spacing: 0.5px;
+  color: #90adca;
 }
 
 @media (min-width: 400px) {
