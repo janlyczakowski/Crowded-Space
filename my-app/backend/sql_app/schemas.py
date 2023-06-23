@@ -9,6 +9,7 @@ class ActiveBase(BaseModel):
     active_owner: str = Field(alias="owner")
     active_launch_date: date = Field(alias="launch_date")
     active_launch_site: str = Field(alias="launch_site")
+    active_purpose: str = Field(alias="purpose")
     active_tle1: str = Field(alias="tle1")
     active_tle2: str = Field(alias="tle2")
     active_type: str = Field(alias="type")
