@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { useThree } from '@react-three/fiber';
 import { useRef, useState, useEffect } from 'react';
+import { PerspectiveCamera } from '@react-three/drei';
 
 import EarthDayMap from '../resources/Earth/8k_earth_daylight.jpg';
 import EarthNormalMap from '../resources/Earth/8k_earth_normal_map.jpg';
@@ -60,6 +61,12 @@ function Earth() {
           rotateSpeed={0.5}
           maxDistance={18} // max zoom out 90
           minDistance={1.3} // max zoom in
+        />
+        <PerspectiveCamera
+          makeDefault
+          position={[800, 350, 500]}
+          fov={60}
+          zoom={3}
         />
       </mesh>
     </>
