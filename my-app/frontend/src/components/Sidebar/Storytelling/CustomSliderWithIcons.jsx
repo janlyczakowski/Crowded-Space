@@ -28,6 +28,11 @@ const CustomSlider = styled(Slider)(({ theme }) => ({
   '& .MuiSlider-rail': {
     backgroundColor: 'rgb(13, 0, 60)',
   },
+  '& .MuiSlider-mark': {
+    // backgroundColor: 'red',
+    width: '4px',
+    height: '4px',
+  },
 }));
 
 const CustomSliderWithIcon = (props) => {
