@@ -6,7 +6,6 @@ import { radToDeg } from 'three/src/math/MathUtils';
 export function getSatellitePosition(tleLine1, tleLine2) {
   // Initialize a satellite record
   const satrec = twoline2satrec(tleLine1, tleLine2);
-
   //  Propagate time using JavaScript Date
   const positionAndVelocity = propagate(satrec, new Date());
   const gmst = gstime(new Date());
@@ -17,6 +16,12 @@ export function getSatellitePosition(tleLine1, tleLine2) {
   // const velocityEci = positionAndVelocity.velocity;
 
   // Get geodetic position
+
+  // If position doesn't exist then return 'no data'
+  if (positionEci === undefined) {
+    return 'no data';
+  }
+
   const positionGd = eciToGeodetic(positionEci, gmst);
 
   const latitude = positionGd.longitude;
