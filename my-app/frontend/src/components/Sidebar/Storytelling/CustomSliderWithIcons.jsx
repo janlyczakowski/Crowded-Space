@@ -37,7 +37,6 @@ const CustomSlider = styled(Slider)(({ theme }) => ({
 
 const CustomSliderWithIcon = (props) => {
   const { onSliderChangeHandler } = props;
-  console.log('custom slider rendered');
 
   function CustomThumbComponent(props) {
     const { children, ...other } = props;
