@@ -3,7 +3,7 @@ import { useRef, useMemo } from 'react';
 import { getSatellitePosition } from '../../getSatellitePosition';
 import styles from './Satellites.module.css';
 import useDataFetcher from '../../hooks/useDataFetcher';
-import { useLoader, useFrame } from '@react-three/fiber';
+import { useLoader } from '@react-three/fiber';
 import * as THREE from 'three';
 import circleImg from '../../resources/pictures/circle.png';
 
@@ -14,8 +14,6 @@ function Satellites(props) {
   const { data, loading, error } = useDataFetcher(url);
 
   const CircleImg = useLoader(THREE.TextureLoader, circleImg);
-
-  // Satellite animation
 
   const loadingStyle =
     sidebarOpen && isBigScreen
@@ -63,7 +61,7 @@ function Satellites(props) {
           positions_CIS.push(...position);
         } else if (satellite.owner === 'JPN' && !noSatellite) {
           positions_JPN.push(...position);
-        } else {
+        } else if (!noSatellite) {
           positions_others.push(...position);
         }
       });
@@ -112,7 +110,7 @@ function Satellites(props) {
           positions_navigation.push(...position);
         } else if (satellite.purpose === 'science' && !noSatellite) {
           positions_science.push(...position);
-        } else {
+        } else if (!noSatellite) {
           positions_others.push(...position);
         }
       });
@@ -210,7 +208,7 @@ function Satellites(props) {
             map={CircleImg}
             attach="material"
             color={sat_data.color}
-            size={0.1}
+            size={0.09}
             sizeAttenuation
             transparent={false}
             alphaTest={0.5}

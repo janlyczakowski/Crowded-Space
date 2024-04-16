@@ -61,7 +61,6 @@ function PurposeChart() {
 
         <Bar dataKey="value">
           {colors.map((color, index) => {
-            console.log(color);
             return <Cell key={index} fill={color}></Cell>;
           })}
         </Bar>
